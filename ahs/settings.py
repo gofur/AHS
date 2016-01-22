@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ahs',
     'element',
+    'setting_proyek',
 ]
 
 MIDDLEWARE_CLASSES = [
