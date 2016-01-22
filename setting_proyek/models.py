@@ -4,7 +4,7 @@ from django.db import models
 
 # Create your models here.
 class Proyek(models.Model):
-	nomor_proyek =	models.IntegerField()
+	nomor_proyek =	models.CharField(max_length=10,unique=True)
 	nama_proyek = models.CharField(max_length=200, blank=False)
 	updated = models.DateTimeField(auto_now=True, auto_now_add=False)
 	timestamp =  models.DateTimeField(auto_now=False, auto_now_add=True)
