@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static "css/login.css" %}" type="text/css">
+{% endblock css %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <div class="account-wall">
+                <img class="profile-img" src='{% static "img/logo_ahs.jpg" %}' alt="">
+                <h1 class="text-center login-title" style="font-weight:bold;">LOGIN APLIKASI AHS</h1>
+                {# <form class="form-signin" method="POST" action="/login/"> #}
+                <form action="" method="post">{% csrf_token %}
+                <input type="text" class="form-control" name="username" placeholder="Username" required autofocus>
+                <input type="password" class="form-control" name="password" placeholder="Password" required>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">
+                    Sign in</button>
+                </form>
+                {% if request.GET.error %}
+                    <ul class='form-errors'>
+                      {% if request.GET.error == '1' %}
+                        <li>User atau Password valid.</li>
+                      {% endif %}
+                      {% if request.GET.error == '2' %}
+                        <li>Periode tidak valid.</li>
+                      {% endif %}
+                      {% if request.GET.error == '3' %}
+                        <li>Periode Habis.</li>
+                      {% endif %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+"templates/login.html" 41L, 175
