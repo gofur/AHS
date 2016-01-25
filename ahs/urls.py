@@ -23,5 +23,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     # url(r'^$', 'ahs.views.index', name="index"),
    # url(r'^$', 'django.contrib.auth.views.login'),
-   # url(r'^logout/$', 'django.contrib.auth.views.logout'),
+    url(r'^logout/$', 'django.contrib.auth.views.logout'),
 ]
