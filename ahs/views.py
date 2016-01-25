@@ -1,9 +1,10 @@
+from django.contrib import messages
 from django.contrib.auth import authenticate, login
-from django.shortcuts import render,render_to_response
+from django.shortcuts import render
 
 
 def login_user(request):
-    state = "Please log in below..."
+
     username = password = ''
     if request.POST:
         username = request.POST.get('username')
@@ -13,10 +14,31 @@ def login_user(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                state = "You're successfully logged in!"
+                # message success
+                messages.success(request, "You're successfully logged in!")
             else:
-                state = "Your account is not active, please contact the site admin."
+                messages.error(request, "Your account is not active, please contact the site admin.")
         else:
-            state = "Your username and/or password were incorrect."
+            messages.error(request, "Your username and/or password were incorrect.")
 
-    return render_to_response('login.html',{'state':state, 'username': username})
+    return render(request, "login.html")
+
+
+
+    # state = "Please log in below..."
+    # username = password = ''
+    # if request.POST:
+    #     username = request.POST.get('username')
+    #     password = request.POST.get('password')
+
+    #     user = authenticate(username=username, password=password)
+    #     if user is not None:
+    #         if user.is_active:
+    #             login(request, user)
+    #             state = "You're successfully logged in!"
+    #         else:
+    #             state = "Your account is not active, please contact the site admin."
+    #     else:
+    #         state = "Your username and/or password were incorrect."
+
+    # return render_to_response('login.html',{'state':state, 'username': username})
