@@ -25,3 +25,10 @@ def login_user(request):
 
     return render(request, "login.html")
 
+def index(request):
+    
+    # if user.is_anonymous:
+    #     return HttpResponseRedirect('login')
+    # else:
+        return render(request,"index.html")
+
