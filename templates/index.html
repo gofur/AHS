@@ -1,7 +1,25 @@
 
-{{ user }}
-{% if user.is_anonymous %}
-<a href="/login/">login</a>
-{% else %}
-<a href="/logout/">logout</a>
+{% if messages %}
+<div class="messages">
+  
+  <ul class="messages">
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{% if "html_safe" in message.tags %}{{ message|safe}}{% else %}{{ message }}{% endif %}</li>
+      {% endfor %}
+  </ul>
+  
+</div>
 {% endif %}
+
+{% if user.is_anonymous %}
+	redirect
+{% else %}
+	{{ user }}	
+{% endif %}
+
+<br>
+{# {% if user.is_anonymous %} #}
+{# <a href="/login/">login</a> #}
+{# {% else %} #}
+<a href="/logout/">logout</a>
+{# {% endif %} #}

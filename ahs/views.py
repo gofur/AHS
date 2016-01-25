@@ -1,10 +1,10 @@
-from django.contrib import messages
+from django.contrib import messages, auth
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 
-def login_user(request):
+def login_view(request):
 
     username = password = ''
     if request.POST:
@@ -26,9 +26,8 @@ def login_user(request):
     return render(request, "login.html")
 
 def index(request):
-    
-    # if user.is_anonymous:
-    #     return HttpResponseRedirect('login')
-    # else:
-        return render(request,"index.html")
+    return render(request,"index.html")
 
+def logout_view(request):
+    auth.logout(request)
+    return HttpResponseRedirect("/login/")
