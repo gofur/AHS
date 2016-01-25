@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 
@@ -15,8 +16,8 @@ def login_user(request):
             if user.is_active:
                 login(request, user)
                 # message success
-                # messages.success(request, "You're successfully logged in!")
-                return render(request, "index.html")
+                messages.success(request, "You're successfully logged in!")
+                return HttpResponseRedirect("/")
             else:
                 messages.error(request, "Your account is not active, please contact the site admin.")
         else:
