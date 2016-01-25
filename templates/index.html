@@ -11,11 +11,7 @@
 </div>
 {% endif %}
 
-{% if user.is_anonymous %}
-	redirect
-{% else %}
-	{{ user }}	
-{% endif %}
+{{ user }}
 
 <br>
 {# {% if user.is_anonymous %} #}

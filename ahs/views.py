@@ -26,7 +26,10 @@ def login_view(request):
     return render(request, "login.html")
 
 def index(request):
-    return render(request,"index.html")
+    if request.user.is_authenticated():
+        return render(request,"index.html")
+    else:
+        return HttpResponseRedirect("/login/")
 
 def logout_view(request):
     auth.logout(request)
