@@ -1,20 +1,124 @@
 {% extends "base.html" %}
-{% load staticfiles %}
+
+{% block menu %}
+{% include "navbar.html" %}
+{% endblock menu %}
 
 {% block content %}
-{% if messages %}
-<div class="messages">
-  
-  <ul class="messages">
-      {% for message in messages %}
-      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{% if "html_safe" in message.tags %}{{ message|safe}}{% else %}{{ message }}{% endif %}</li>
-      {% endfor %}
-  </ul>
-  
-</div>
-{% endif %}
 
-{{ user }}
+
+<div class="col-sm-12">
+
+	
+	<div class="jumbotron">
+        <h1>Navbar example</h1>
+        <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+        <p>To see the difference betwe
+        asdasd
+
+
+
+asdaadasd
+asdadasd
+asd
+a
+da
+
+asda
+da
+da
+da
+d
+as
+dadasdasdasd
+asd
+ada
+sd
+as
+da
+
+
+asdasdasd
+
+asdasdasd
+a
+sdasdasd<p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+        <p>To see the difference betwe
+        asdasd
+
+
+
+asdaadasd
+asdadasd
+asd
+a
+da
+
+asda
+da
+da
+da
+d
+as
+dadasdasdasd
+asd
+ada
+sd
+as
+da
+
+
+asdasdasd
+
+asdasdasd
+a
+sdasdasd<p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+        <p>To see the difference betwe
+        asdasd
+
+
+
+asdaadasd
+asdadasd
+asd
+a
+da
+
+asda
+da
+da
+da
+d
+as
+dadasdasdasd
+asd
+ada
+sd
+as
+da
+
+
+asdasdasd
+
+asdasdasd
+a
+sdasdasd
+
+        asdasdas
+        asdasda
+        asdasdasd
+
+        asdasda
+
+
+        asdasden static and fixed top navbars, just scroll.</p>
+        <p>
+          <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs »</a>
+        </p>
+      </div>
+</div>
+
+
 
 <br>
 {# {% if user.is_anonymous %} #}
