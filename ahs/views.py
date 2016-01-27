@@ -4,6 +4,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 
+from setting_proyek.models import Proyek
+
 def login_view(request):
 
     username = password = ''
@@ -14,7 +16,6 @@ def login_view(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             if user.is_active:
-                title = "My beautiful list of books"
                 login(request, user)
                 # message success
                 messages.success(request, "You're successfully logged in!")
@@ -24,11 +25,16 @@ def login_view(request):
         else:
             messages.error(request, "Your username and/or password were incorrect.")
 
-    return render(request, "login.html")
+    return render(request, "login.html", instance)
 
 def index(request):
     if request.user.is_authenticated():
-        return render(request,"index.html")
+        instance = Proyek.objects.get(pengguna_id=request.user.id)
+        context = {
+                "nomor_proyek": instance.nomor_proyek,
+                "nama_proyek": instance.nama_proyek,
+            }
+        return render(request,"index.html", context)
     else:
         return HttpResponseRedirect("/login/")
 
