@@ -14,6 +14,7 @@ def login_view(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             if user.is_active:
+                title = "My beautiful list of books"
                 login(request, user)
                 # message success
                 messages.success(request, "You're successfully logged in!")
