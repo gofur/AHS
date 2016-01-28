@@ -29,10 +29,9 @@ def login_view(request):
 
 def index(request):
     if request.user.is_authenticated():
-        instance = Proyek.objects.get(pengguna_id=request.user.id)
+        query_set = Proyek.objects.get(pengguna_id=request.user.id)
         context = {
-                "nomor_proyek": instance.nomor_proyek,
-                "nama_proyek": instance.nama_proyek,
+                "object_list": query_set,
             }
         return render(request,"index.html", context)
     else:
