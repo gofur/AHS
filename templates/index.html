@@ -9,114 +9,21 @@
 
 <div class="col-sm-12">
 
+<div class="table-responsive">
+<table class="table table-bordered"> 
+<thead> <tr> <th>Nomor Proyek</th> <th>Nama Proyek</th> <th>Tanggal Create Proyek</th> <th> Action</th>
+</tr> </thead> <tbody>
+{% for obj in object_list %}
+ <tr>
+ <td>{{ obj.nomor_proyek }}</td>
+    <td>{{ obj.nama_proyek }}</td>
+    <td>{{ obj.timestamp }}</td>
+    <td>edit</td>
+</tr>
+{% endfor %}
+</tbody> </table>
+</div>
 	
-	<div class="jumbotron">
-        <h1>Navbar example</h1>
-
-        <p>{{ object_list }}This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-        <p>To see the difference betwe
-        asdasd
-
-
-
-asdaadasd
-asdadasd
-asd
-a
-da
-
-asda
-da
-da
-da
-d
-as
-dadasdasdasd
-asd
-ada
-sd
-as
-da
-
-
-asdasdasd
-
-asdasdasd
-a
-sdasdasd<p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-        <p>To see the difference betwe
-        asdasd
-
-
-
-asdaadasd
-asdadasd
-asd
-a
-da
-
-asda
-da
-da
-da
-d
-as
-dadasdasdasd
-asd
-ada
-sd
-as
-da
-
-
-asdasdasd
-
-asdasdasd
-a
-sdasdasd<p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-        <p>To see the difference betwe
-        asdasd
-
-
-
-asdaadasd
-asdadasd
-asd
-a
-da
-
-asda
-da
-da
-da
-d
-as
-dadasdasdasd
-asd
-ada
-sd
-as
-da
-
-
-asdasdasd
-
-asdasdasd
-a
-sdasdasd
-
-        asdasdas
-        asdasda
-        asdasdasd
-
-        asdasda
-
-
-        asdasden static and fixed top navbars, just scroll.</p>
-        <p>
-          <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs »</a>
-        </p>
-      </div>
 </div>
 
 {% endblock content %}
