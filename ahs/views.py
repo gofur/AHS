@@ -25,11 +25,11 @@ def login_view(request):
         else:
             messages.error(request, "Your username and/or password were incorrect.")
 
-    return render(request, "login.html", instance)
+    return render(request, "login.html")
 
 def index(request):
     if request.user.is_authenticated():
-        query_set = Proyek.objects.get(pengguna_id=request.user.id)
+        query_set = Proyek.objects.filter(pengguna_id=request.user.id)
         context = {
                 "object_list": query_set,
             }
