@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404, redirect
 
 # Create your views here.
-def ahs_detail(request, slug=None): #retrieve
+def ahs_detail(request, id=None): #retrieve
 	# instance = Post.objects.get(id=1)
 	instance = get_object_or_404(Post,slug=slug)
 	share_string = quote_plus(instance.content)
