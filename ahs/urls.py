@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index, name="index"),
     url(r'^logout/$', logout_view),
+    #url(r'^posts/', include("posts.urls", namespace='posts')),
 ]
 
 if settings.DEBUG:

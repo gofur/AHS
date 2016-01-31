@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'ahs',
     'element',
     'setting_proyek',
+    'transaksi_ahs',
+    'transaksi_rap',
 ]
 
 MIDDLEWARE_CLASSES = [
