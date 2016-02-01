@@ -6,14 +6,15 @@ from .models import AHS
 # Create your views here.
 def ahs_detail(request, id=None): #retrieve
 	# instance = Post.objects.get(id=1)
-	instance = get_object_or_404(AHS,id=id)
-	share_string = quote_plus(instance.content)
-	context = {
-		"title": instance.title,
-		"instance": instance,
-		"share_string": share_string,
-	}
-	return render(request, "index.html", context)
+	# instance = get_object_or_404(AHS,id=id)
+	# share_string = quote_plus(instance.content)
+	# context = {
+	# 	"title": instance.nomor_proyek,
+	# 	# "instance": instance,
+	# 	# "share_string": share_string,
+	# }
+	# return render(request, "ahs/ahs_list.html", context)
+	return render(request, "ahs/ahs_list.html")
 
 
 def ahs_list(request):
