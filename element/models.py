@@ -1,9 +1,20 @@
 from __future__ import unicode_literals
-
 from django.db import models
 
 # Create your models here.
+class JenisElement(models.Model):
+	kode_jenis_element = models.CharField(max_length=8, unique=True)
+	nama_jenis_element = models.CharField(max_length=100)
+
+	def __unicode__(self):
+		return self.nama_jenis_element
+
+	def __str__(self):
+		return self.nama_jenis_element
+
+
 class Element(models.Model):
+	jenis_element = models.ForeignKey(JenisElement)
 	kode_element = models.CharField(max_length=8, unique=True)
 	nama_element = models.CharField(max_length=100)
 	uraian_element = models.CharField(max_length=100, blank=True)
@@ -19,3 +30,5 @@ class Element(models.Model):
 
 	def __str__(self):
 		return self.kode_element
+
+
