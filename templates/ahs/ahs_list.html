@@ -1,20 +1,86 @@
 {% extends "base.html" %}
-
 {% block menu %}
-{% include "navbar.html" %}
+	{% include "navbar.html" %}
 {% endblock menu %}
-
 {% block content %}
+	<div class="panel panel-default">
+		<div class="panel-heading">Informasi Proyek</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-md-12">Nomor Proyek : {{ data_proyek.nomor_proyek }}</div>
+				<div class="col-md-12">Nama Proyek : {{ data_proyek.nama_proyek }}</div>
+				<div class="col-md-12">Tanggal Mulai Proyek : {{ data_proyek.timestamp|date:"j M Y" }}</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#">AHS</a></li>
+				<li><a href="#">RAB</a></li>
+				<li><a href="#">Laporan</a></li>
+			</ul>
+		</div>
 
-
-<div class="col-sm-12">
-
-<ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="#">AHS</a></li>
-  <li role="presentation"><a href="#">RAB</a></li>
-  <li role="presentation"><a href="#">Laporan</a></li>
-</ul>
+		<div class="col-sm-12">
+		<br>
 	
-</div>
+		<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>AHS</th>
+                <th>Nama AHS</th>
+                <th>Jenis Element</th>
+                <th>Kode Element</th>
+                <th>Nama Element</th>
+                <th>Uraian</th>
+                <th>Satuan</th>
+                <th>Harga</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+       <!-- <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </tfoot> -->
+        <tbody>
+            <tr>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td>2011/04/25</td>
+                <td>$320,800</td>
+                <td>$320,800</td>
+                <td>$320,800</td>
+                <td>$320,800</td>
+                <td>$320,800</td>
+            </tr>
+            <tr>
+                <td>Garrett Winters</td>
+                <td>Accountant</td>
+                <td>Tokyo</td>
+                <td>63</td>
+                <td>2011/07/25</td>
+                <td>$170,750</td>
+                <td>$320,800</td>
+                <td>$320,800</td>
+                <td>$320,800</td>
+                <td>$320,800</td>
+            </tr>
+          
+          
+        </tbody>
+    </table>
+		
+		</div>
+	</div>
 
 {% endblock content %}

@@ -3,20 +3,22 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 
 from .models import AHS
+from setting_proyek.models import Proyek
+
 
 # Create your views here.
 @login_required(login_url='/login/')
 def ahs_detail(request, id=None): #retrieve
-	# instance = Post.objects.get(id=1)
+	#instance = Post.objects.get(id=1)
+	data_proyek_query = Proyek.objects.get(id=id)
 	# 	instance = get_object_or_404(AHS,id=id)
 	# share_string = quote_plus(instance.content)
-	# context = {
-	# 	"title": instance.nomor_proyek,
-	# 	# "instance": instance,
-	# 	# "share_string": share_string,
-	# }
-	# return render(request, "ahs/ahs_list.html", context)
-	return render(request, "ahs/ahs_list.html")
+	context = {
+		"data_proyek": data_proyek_query,
+		# "share_string": share_string,
+	}
+	
+	return render(request, "ahs/ahs_list.html", context)
 
 
 def ahs_list(request):
