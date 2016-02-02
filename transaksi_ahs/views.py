@@ -1,12 +1,14 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 
 from .models import AHS
 
 # Create your views here.
+@login_required(login_url='/login/')
 def ahs_detail(request, id=None): #retrieve
 	# instance = Post.objects.get(id=1)
-	# instance = get_object_or_404(AHS,id=id)
+	# 	instance = get_object_or_404(AHS,id=id)
 	# share_string = quote_plus(instance.content)
 	# context = {
 	# 	"title": instance.nomor_proyek,

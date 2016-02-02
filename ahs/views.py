@@ -2,6 +2,7 @@ from django.contrib import messages, auth
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 
 from setting_proyek.models import Proyek
@@ -27,6 +28,7 @@ def login_view(request):
 
     return render(request, "login.html")
 
+@login_required(login_url='/login/')
 def index(request):
     if request.user.is_authenticated():
         query_set = Proyek.objects.filter(pengguna_id=request.user.id)
