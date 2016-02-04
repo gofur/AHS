@@ -11,11 +11,12 @@ from setting_proyek.models import Proyek
 def ahs_detail(request, id=None): #retrieve
 	#instance = Post.objects.get(id=1)
 	data_proyek_query = Proyek.objects.get(id=id)
+	data_ahs_query = AHS.objects.filter(nomor_proyek_id=id)
 	# 	instance = get_object_or_404(AHS,id=id)
 	# share_string = quote_plus(instance.content)
 	context = {
 		"data_proyek": data_proyek_query,
-		# "share_string": share_string,
+		 "data_ahs": data_ahs_query,
 	}
 	
 	return render(request, "ahs/ahs_list.html", context)

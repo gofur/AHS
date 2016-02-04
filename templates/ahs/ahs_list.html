@@ -1,4 +1,16 @@
 {% extends "base.html" %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.css">
+<style type="text/css">
+	td.details-control {
+    background: url('../img/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+tr.shown td.details-control {
+    background: url('../img/details_close.png') no-repeat center center;
+}
+</style>
+{% endblock css%}
 {% block menu %}
 	{% include "navbar.html" %}
 {% endblock menu %}
@@ -24,8 +36,14 @@
 
 		<div class="col-sm-12">
 		<br>
-	
-		<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+		<div class="row">
+		  
+		  <div class="col-md-12">
+		  	<button type="button" id="add_ahs" class="btn btn-primary btn-sm pull-left">Add AHS</button>
+		  	</div>
+		</div>
+		 <br>
+		<table id="ahs_table" class="table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th>No</th>
@@ -35,6 +53,8 @@
                 <th>Kode Element</th>
                 <th>Nama Element</th>
                 <th>Uraian</th>
+                <th>Harga Satuan</th>
+                <th>Koefisien</th>
                 <th>Satuan</th>
                 <th>Harga</th>
                 <th>Action</th>
@@ -51,32 +71,50 @@
             </tr>
         </tfoot> -->
         <tbody>
-            <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>2011/04/25</td>
-                <td>$320,800</td>
-                <td>$320,800</td>
-                <td>$320,800</td>
-                <td>$320,800</td>
-                <td>$320,800</td>
-            </tr>
-            <tr>
-                <td>Garrett Winters</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>63</td>
-                <td>2011/07/25</td>
-                <td>$170,750</td>
-                <td>$320,800</td>
-                <td>$320,800</td>
-                <td>$320,800</td>
-                <td>$320,800</td>
-            </tr>
-          
-          
+            
+		{% for obj in data_ahs %}
+		<tr class="clickable" data-toggle="collapse" id="row{{ obj.id }}" data-target=".row{{ obj.id }}">
+            <!--<td><i class="glyphicon glyphicon-plus"></i></td>-->
+            <td></td>
+       		<td>{{ obj.nomor_ahs }}</td>
+		    <td>{{ obj.nama_ahs }}</td>
+		    <td></td>
+		    <td><select id="company" class="form-control">
+		      <option>{{ obj.kode_element }}</option>
+		      <option>medium</option>
+		      <option>large</option>
+		    </select> 
+			</td>
+		    <td></td>
+		    <td></td>
+		    <td></td>
+		    <td></td>
+		    <td>{{ obj.satuan_element }}</td>
+		    <td>{{ obj.harga_satuan }}</td>
+		    <td></td>
+        </tr>
+      <!--  <tr class="collapse row{{ obj.id }}">
+            <td></td>
+            <td></td>
+          	<td></td>  
+            <td>{{ obj.satuan_element }}</td>
+            <td><select id="company" class="form-control">
+			      <option>{{ obj.kode_element }}</option>
+			      <option>medium</option>
+			      <option>large</option>
+			    </select> 
+			</td>
+            <td>{{ obj.nama_element }}</td>
+            <td>{{ obj.uraian_element }}</td>
+            <td>{{ obj.satuan_element }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>-->
+        
+        {% endfor %}
+      
         </tbody>
     </table>
 		
@@ -84,3 +122,29 @@
 	</div>
 
 {% endblock content %}
+
+{% block js %}
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.10/js/jquery.dataTables.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+		$('#ahs_table').DataTable( {
+		    responsive: {
+		        details: {
+		            type: 'column',
+		            target: 'tr'
+		        }
+		    },
+		    columnDefs: [ {
+		        className: 'control',
+		        orderable: false,
+		        targets:   0
+		    } ],
+		    order: [ 1, 'asc' ]
+		} );
+		} );
+
+		$('#add_ahs').click(function() {
+        	$('#ahs_table tr:last').after('<tr class="child"><td><\/td><td><\/td><td><\/td><td><\/td><td><\/td><td><\/td><td><\/td><td><\/td><td><\/td><td><\/td><td><\/td><td><\/td></tr>');
+   		 });
+	</script>
+{% endblock js %}

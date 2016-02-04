@@ -7,7 +7,7 @@ from django.db import models
 
 # Create your models here.
 class AHS(models.Model):
-	nomor_ahs = models.CharField(max_length=7, unique=True)
+	nomor_ahs = models.CharField(max_length=7)
 	nomor_proyek =	models.ForeignKey(Proyek)
 	nama_ahs = models.CharField(max_length=120, blank=False)
 	kode_element = models.ForeignKey(Element)
