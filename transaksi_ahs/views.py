@@ -2,7 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 
-from .models import AHS
+from .models import AHS, AHS_Detail
 from setting_proyek.models import Proyek
 
 
