@@ -75,20 +75,17 @@ tr.shown td.details-control {
             
 		{% for obj in data_ahs %}
 
-			{% for data_ahs in detail_ahs_query %}
-				
-			{% endfor %}
+
 			<tr class="clickable" data-toggle="collapse" id="row{{ obj.id }}" data-target=".row{{ obj.id }}">
             <!--<td><i class="glyphicon glyphicon-plus"></i></td>-->
-            <td></td>
+            <td>
+            {% for item in data_ahs.detail_ahs_query %}
+				{{ item.data_ahs.element.kode_element }}
+			{% endfor %}</td>
        		<td>{{ obj.nomor_ahs }}</td>
 		    <td>{{ obj.nama_ahs }}</td>
 		    <td></td>
-		    <td><select id="company" class="form-control">
-		      <option>{{ obj.kode_element }}</option>
-		      <option>medium</option>
-		      <option>large</option>
-		    </select> 
+		    <td>
 			</td>
 		    <td></td>
 		    <td></td>
@@ -96,7 +93,7 @@ tr.shown td.details-control {
 		    <td></td>
 		    <td>{{ obj.satuan_ahs }}</td>
 		    <td>{{ obj.harga_satuan }}</td>
-		    <td></td>
+		    <td><button type="button" id="add_ahs_detail{{ obj.id }}" class="btn btn-primary btn-sm pull-right">Add Detail AHS</button></td>
         </tr>
       <!--  <tr class="collapse row{{ obj.id }}">
             <td></td>
@@ -151,5 +148,10 @@ tr.shown td.details-control {
 		$('#add_ahs').click(function() {
         	$('#ahs_table tr:last').after('<tr class="child"><td><\/td><td><\/td><td><\/td><td><\/td><td><\/td><td><\/td><td><\/td><td><\/td><td><\/td><td><\/td><td><\/td><td><\/td></tr>');
    		 });
+		{% for obj in data_ahs %}
+		$('#add_ahs_detail{{ obj.id }}').click(function() {
+        	$('#ahs_table #row{{ obj.id }}').after('<tr class="child"><td><\/td><td><\/td><td><\/td><td><\/td><td><\/td><td><\/td><td><\/td><td><\/td><td><\/td><td><\/td><td><\/td><td><\/td></tr>');
+   		 });
+		{% endfor %}
 	</script>
 {% endblock js %}

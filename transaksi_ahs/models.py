@@ -11,7 +11,7 @@ class AHS(models.Model):
 	nomor_proyek =	models.ForeignKey(Proyek)
 	nama_ahs = models.CharField(max_length=120, blank=False)
 	satuan_ahs = models.CharField(max_length=10, blank=True)
-	
+	total_harga = models.FloatField(null=True, blank=True, default=None)
 	updated_date = models.DateTimeField(auto_now=True)
 	created_date =  models.DateTimeField(auto_now_add=True)
 	updated_by = models.ForeignKey(User, related_name='ahs_updated_by')
@@ -28,8 +28,8 @@ class AHS(models.Model):
 		verbose_name_plural = "ahs"	
 
 class AHS_Detail(models.Model):
-	nomor_ahs = models.ForeignKey(AHS)
-	kode_element = models.ForeignKey(Element)
+	ahs = models.ForeignKey(AHS)
+	element = models.ForeignKey(Element)
 	harga_satuan = models.FloatField(blank=False)
 	koefisien = models.FloatField(blank=False)
 	catatan =  models.TextField(max_length=200, blank=True) 
@@ -37,5 +37,5 @@ class AHS_Detail(models.Model):
 	class Meta:
 		verbose_name = "ahs detail"	    
 		verbose_name_plural = "ahs detail"
-		unique_together = ('nomor_ahs', 'kode_element',)
+		unique_together = ('ahs', 'element',)
 

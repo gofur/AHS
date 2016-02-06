@@ -17,15 +17,15 @@ class AHSModelAdmin(admin.ModelAdmin):
 
 class AHSDetailModelAdmin(admin.ModelAdmin):
 	# list_display = ['nomor_ahs', 'nomor_proyek', 'nama_ahs', 'kode_element', 'harga_satuan', 'koefisien', 'catatan', 'updated_date', 'updated_by']
-	list_display = ['nomor_ahs', 'get_name', 'harga_satuan', 'koefisien']
-	list_filter = ['nomor_ahs']
+	list_display = ['ahs', 'get_name', 'harga_satuan', 'koefisien']
+	list_filter = ['ahs']
 	# search_fields = ['nomor_proyek', 'nama_proyek']
 	class Meta:
 		model = AHS_Detail
 
 	def get_name(self, obj):
-		return obj.kode_element.kode_element
-	get_name.admin_order_field  = 'kode_element'  #Allows column order sorting
+		return obj.element.kode_element
+	get_name.admin_order_field  = 'element'  #Allows column order sorting
 	get_name.short_description = 'Kode Element'  #Renames column head
 
 
