@@ -9,16 +9,17 @@ from setting_proyek.models import Proyek
 # Create your views here.
 @login_required(login_url='/login/')
 def ahs_detail(request, id=None): #retrieve
-	#instance = Post.objects.get(id=1)
 	data_proyek_query = Proyek.objects.get(id=id)
-	data_ahs_query = AHS.objects.filter(nomor_proyek_id=id)
-	#detail_ahs_query = AHS_Detail.objects.filter(data_ahs_query[0])
-	# 	instance = get_object_or_404(AHS,id=id)
-	# share_string = quote_plus(instance.content)
+	data_ahs = AHS.objects.filter(nomor_proyek_id=id)
+	
+	for data in data_ahs:
+ 	  for detail in data.ahs_details.all():
+ 	  	total_harga_detail =  detail.element.harga_satuan * detail.koefisien
+
 	context = {
 		"data_proyek": data_proyek_query,
-		 "data_ahs": data_ahs_query,
-		# "detail_ahs_query": detail_ahs_query,
+		 "data_ahs": data_ahs,
+		 "total_harga_detail": total_harga_detail,
 	}
 	
 	return render(request, "ahs/ahs_list.html", context)
