@@ -2,7 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 
-from .models import AHS, AHS_Detail
+from transaksi_ahs.models import AHS, AHS_Detail
 from setting_proyek.models import Proyek
 
 
@@ -11,10 +11,12 @@ from setting_proyek.models import Proyek
 def ahs_detail(request, id=None): #retrieve
 	data_proyek_query = Proyek.objects.get(id=id)
 	data_ahs = AHS.objects.filter(nomor_proyek_id=id)
-	
+
+	total_harga_detail=[]
 	for data in data_ahs:
  	  for detail in data.ahs_details.all():
- 	  	total_harga_detail =  detail.element.harga_satuan * detail.koefisien
+ 	  	total_harga =  detail.element.harga_satuan * detail.koefisien
+ 	  	total_harga_detail.append(total_harga)
 
 	context = {
 		"data_proyek": data_proyek_query,

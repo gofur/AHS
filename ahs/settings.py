@@ -37,12 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mathfilters',
     'ahs',
     'element',
     'setting_proyek',
     'transaksi_ahs',
     'transaksi_rap',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE_CLASSES = [
